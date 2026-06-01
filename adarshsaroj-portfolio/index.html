@@ -12,9 +12,10 @@
             font-family: 'Inter', sans-serif;
             background-color: #1a202c;
             /* Added Cyber Grid Background */
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-image:
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
             background-size: 30px 30px;
             color: #e2e8f0;
             overflow-x: hidden;
@@ -105,6 +106,38 @@
         #copied-message.show {
             opacity: 1;
         }
+        #skills {
+    position: relative;
+}
+
+#skills::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.62);
+}
+
+#skills .container {
+    position: relative;
+    z-index: 2;
+}
+
+#skills::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #1a202c 0%,
+            transparent 15%,
+            transparent 85%,
+            #1a202c 100%
+        );
+
+    pointer-events: none;
+}
     </style>
 </head>
 
@@ -163,10 +196,49 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="min-h-[72vh] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center" style="background-image: url('background.jpg');">
+        <section id="skills" class="bg-cover bg-center bg-no-repeat py-20 relative" style="background-image: linear-gradient(to bottom, #0d131f 0%, transparent 15%, transparent 85%, #0d131f 100%), url('background.jpg');">
             <div class="container mx-auto px-4">
                 <h2 class="section-title text-3xl md:text-4xl font-bold text-white">My Skills & Certifications</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
+                    
+                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                        <a href="cyber-sec.jpg" to="/nextpage" target="_blank">
+                            <div class="text-5xl mb-4 text-purple-400"><span class="inline-block" role="img" aria-label="cybersec-emoji">👨🏻‍💻🔐</span></div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Cyber Security</h3>
+                            <p class="text-gray-300 text-sm">Networking, Linux & Tools</p>
+                        </a>
+                    </div>
+
+                    <!-- New: TryHackMe Certification -->
+                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                        <a href="https://tryhackme.com/" target="_blank">
+                            <div class="text-5xl mb-4 text-red-500"><span class="inline-block" role="img" aria-label="target-emoji">🎯</span></div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Offensive Security</h3>
+                            <p class="text-gray-300 text-sm">TryHackMe: Cyber Security 101 & Directory Brute-forcing</p>
+                        </a>
+                    </div>
+                    
+                    <!-- OverTheWire: Bandit Card (LinkedIn Link) -->
+                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                        <a href="YOUR_LINKEDIN_POST_URL" target="_blank">
+                            <div class="text-5xl mb-4 text-yellow-500">
+                                <span class="inline-block" role="img" aria-label="terminal-emoji">📟</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Linux Exploitation</h3>
+                            <p class="text-gray-300 text-sm">OverTheWire: Bandit Wargames | Core Command Line</p>
+                        </a>
+                    </div>
+                    
+                    <!-- Cisco Networking Academy Card -->
+                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                        <a href="cisco-networking.jpg" target="_blank">
+                            <div class="text-5xl mb-4 text-teal-400">
+                                <span class="inline-block" role="img" aria-label="network-emoji">🌐</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Network Engineering</h3>
+                            <p class="text-gray-300 text-sm">Cisco NetAcad: 13 Labs covering TCP/UDP Ports, ARP, Routing and NAT</p>
+                        </a>
+                    </div>
                     
                     <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
                         <a href="web-dev.jpg" to="/nextpage" target="_blank">
@@ -181,31 +253,6 @@
                             <div class="text-5xl mb-4 text-green-400"><span class="inline-block" role="img" aria-label="server-emoji">⚙️</span></div>
                             <h3 class="text-xl font-semibold mb-2 text-white">Backend / Database</h3>
                             <p class="text-gray-300 text-sm">Node.js, Python / MySQL, MongoDB</p>
-                        </a>
-                    </div>
-                    
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="cyber-sec.jpg" to="/nextpage" target="_blank">
-                            <div class="text-5xl mb-4 text-purple-400"><span class="inline-block" role="img" aria-label="cybersec-emoji">👨🏻‍💻🔐</span></div>
-                            <h3 class="text-xl font-semibold mb-2 text-white">Cyber Security</h3>
-                            <p class="text-gray-300 text-sm">Networking, Linux & Tools</p>
-                        </a>
-                    </div>
-                    
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="#">
-                            <div class="text-5xl mb-4 text-yellow-400"><span class="inline-block" role="img" aria-label="cloud-emoji">☁️</span></div>
-                            <h3 class="text-xl font-semibold mb-2 text-white">Jr. DevOps</h3>
-                            <p class="text-gray-300 text-sm">Docker, Kubernetes, AWS, Vercel</p>
-                        </a>
-                    </div>
-
-                    <!-- New: TryHackMe Certification -->
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="https://tryhackme.com/" target="_blank">
-                            <div class="text-5xl mb-4 text-red-500"><span class="inline-block" role="img" aria-label="target-emoji">🎯</span></div>
-                            <h3 class="text-xl font-semibold mb-2 text-white">Offensive Security</h3>
-                            <p class="text-gray-300 text-sm">TryHackMe: Cyber Security 101 & Directory Brute-forcing</p>
                         </a>
                     </div>
                     
@@ -290,7 +337,7 @@
                             <img class="w-full h-48 object-cover transform hover:scale-110 transition duration-500 ease-in-out" src="college-map-img.png" alt="College Map System">
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold text-white mb-2">Interactive College Map</h3>
+                            <h3 class="text-xl font-semibold text-white mb-2">KIT-Nav</h3>
                             <p class="text-gray-400 mb-4">A complete college mapping and navigation system designed for efficient campus routing and location tracking.</p>
                             <div class="flex space-x-2 mb-4">
                                 <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-2 py-1 rounded-full">Node.js</span>
@@ -362,7 +409,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Typing Animation Initialization
             var typed = new Typed('#typed-element', {
-                strings: ['Tech Enthusiast.', 'Cyber Security Learner.', 'Junior Web Developer.', 'Kali Linux User.'],
+                strings: ['Tech Enthusiast.', 'Cyber Security Learner.', 'Kali Linux User.', 'Junior Web Developer.', 'Junior Network Engineer.'],
                 typeSpeed: 50,
                 backSpeed: 30,
                 loop: true,
