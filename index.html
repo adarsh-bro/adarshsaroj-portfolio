@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adarsh's Portfolio</title>
+    <meta name="description" content="Adarsh Saroj — Cyber Security learner, Network Engineering enthusiast, and junior web developer. Explore my skills, certifications, and projects.">
+    <meta property="og:title" content="Adarsh Saroj — Portfolio">
+    <meta property="og:description" content="Cyber Security learner, Network Engineering enthusiast, and junior web developer.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="photo.png">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a202c'/%3E%3Ctext x='32' y='42' font-family='Arial, sans-serif' font-size='26' font-weight='700' fill='%2363b3ed' text-anchor='middle'%3EAS%3C/text%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -106,41 +112,28 @@
         #copied-message.show {
             opacity: 1;
         }
+
+        /* ---- FIX: typewriter no longer shifts the page on mobile ----
+           Previously #typed-element had white-space:nowrap with no
+           reserved space, so every time the typed string changed length,
+           the line (and everything below it) reflowed up/down, especially
+           on narrow screens where the sentence wraps differently per string.
+           Reserving a min-height on the wrapping line + allowing normal
+           wrapping fixes this without changing how anything looks. */
+        #hero-tagline {
+            min-height: 2rem;
+            line-height: 2rem;
+        }
         #typed-element {
-    white-space: nowrap;
-}
-        #skills {
-    position: relative;
-}
-
-#skills::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.62);
-}
-
-#skills .container {
-    position: relative;
-    z-index: 2;
-}
-
-#skills::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #1a202c 0%,
-            transparent 15%,
-            transparent 85%,
-            #1a202c 100%
-        );
-
-    pointer-events: none;
-}
+            white-space: normal;
+            display: inline;
+        }
+        @media (max-width: 767px) {
+            #hero-tagline {
+                min-height: 4.5rem; /* enough for the sentence to wrap up to 3 lines */
+                line-height: 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -181,18 +174,26 @@
                     <img class="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-gray-600 object-cover shadow-2xl hover:scale-105 transition duration-300" src="photo.png" alt="Profile Picture">
                 </div>
                 <div class="md:w-2/3 w-full text-center md:text-left">
+                    <span class="inline-flex items-center gap-2 bg-gray-800/70 border border-gray-700 text-gray-300 text-sm font-medium px-4 py-1.5 rounded-full mb-5">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        Open to opportunities
+                    </span>
                     <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight">Hello, I'm <br class="md:hidden"> <span class="text-blue-400">Adarsh</span>.</h1>
-                    <!-- Added Typing Animation Span -->
-                    <p class="text-2xl text-gray-400 mb-6 font-light">I am a <span id="typed-element" class="font-semibold text-white"></span> from Mirzapur, UP.</p>
+                    <!-- Typing Animation Span -->
+                    <p id="hero-tagline" class="text-2xl text-gray-400 mb-6 font-light">I am a <span id="typed-element" class="font-semibold text-white"></span> from Mirzapur, UP.</p>
                     <p class="text-gray-300 mb-8 max-w-2xl mx-auto md:mx-0">
                         I specialize in understanding Computer Networks, Operating Systems, and CyberSecurity
                         fundamentals, with a growing focus on DevOps practices. I am passionate about exploring how
                         systems operate under the hood; whether it's managing infrastructure, automating workflows, or
                         strengthening security across applications and networks.
                     </p>
-                    <div class="flex justify-center md:justify-start space-x-4">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
                         <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-transform hover-effect duration-300 ease-in-out shadow-lg">Get In Touch</a>
-                        <a href="AdarshSarojResume.pdf" download to="/nextpage" target="_blank" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 rounded-full transition-transform hover-effect duration-300 ease-in-out">Download Resume</a>
+                        <a href="AdarshSarojResume.pdf" target="_blank" rel="noopener noreferrer" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 rounded-full transition-transform hover-effect duration-300 ease-in-out">Preview Resume</a>
+                        <a href="AdarshSarojResume.pdf" download class="bg-transparent border-2 border-gray-500 text-gray-300 hover:bg-gray-700 hover:text-white hover:border-gray-700 font-bold py-3 px-6 rounded-full transition-transform hover-effect duration-300 ease-in-out">Download</a>
                     </div>
                 </div>
             </div>
@@ -204,8 +205,8 @@
                 <h2 class="section-title text-3xl md:text-4xl font-bold text-white">My Skills & Certifications</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
                     
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="cyber-sec.jpg" to="/nextpage" target="_blank">
+                    <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <a href="cyber-sec.jpg" target="_blank" rel="noopener noreferrer">
                             <div class="text-5xl mb-4 text-purple-400"><span class="inline-block" role="img" aria-label="cybersec-emoji">👨🏻‍💻🔐</span></div>
                             <h3 class="text-xl font-semibold mb-2 text-white">Cyber Security</h3>
                             <p class="text-gray-300 text-sm">Networking, Linux & Tools</p>
@@ -213,8 +214,8 @@
                     </div>
 
                     <!-- New: TryHackMe Certification -->
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="https://tryhackme.com/" target="_blank">
+                    <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <a href="https://tryhackme.com/" target="_blank" rel="noopener noreferrer">
                             <div class="text-5xl mb-4 text-red-500"><span class="inline-block" role="img" aria-label="target-emoji">🎯</span></div>
                             <h3 class="text-xl font-semibold mb-2 text-white">Offensive Security</h3>
                             <p class="text-gray-300 text-sm">TryHackMe: Cyber Security 101 & Directory Brute-forcing</p>
@@ -222,8 +223,8 @@
                     </div>
                     
                     <!-- OverTheWire: Bandit Card (LinkedIn Link) -->
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="YOUR_LINKEDIN_POST_URL" target="_blank">
+                    <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <a href="YOUR_LINKEDIN_POST_URL" target="_blank" rel="noopener noreferrer">
                             <div class="text-5xl mb-4 text-yellow-500">
                                 <span class="inline-block" role="img" aria-label="terminal-emoji">📟</span>
                             </div>
@@ -233,8 +234,8 @@
                     </div>
                     
                     <!-- Cisco Networking Academy Card -->
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="cisco-networking.jpg" target="_blank">
+                    <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <a href="cisco-networking.jpg" target="_blank" rel="noopener noreferrer">
                             <div class="text-5xl mb-4 text-teal-400">
                                 <span class="inline-block" role="img" aria-label="network-emoji">🌐</span>
                             </div>
@@ -243,32 +244,32 @@
                         </a>
                     </div>
                     
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="web-dev.jpg" to="/nextpage" target="_blank">
+                    <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <a href="web-dev.jpg" target="_blank" rel="noopener noreferrer">
                             <div class="text-5xl mb-4 text-blue-400"><span class="inline-block" role="img" aria-label="code-emoji">💻</span></div>
                             <h3 class="text-xl font-semibold mb-2 text-white">Frontend</h3>
                             <p class="text-gray-300 text-sm">HTML, CSS, JavaScript, React JS</p>
                         </a>
                     </div>
                     
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="web-dev.jpg" to="/nextpage" target="_blank">
+                    <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <a href="web-dev.jpg" target="_blank" rel="noopener noreferrer">
                             <div class="text-5xl mb-4 text-green-400"><span class="inline-block" role="img" aria-label="server-emoji">⚙️</span></div>
                             <h3 class="text-xl font-semibold mb-2 text-white">Backend / Database</h3>
                             <p class="text-gray-300 text-sm">Node.js, Python / MySQL, MongoDB</p>
                         </a>
                     </div>
                     
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="ai.jpg" to="/nextpage" target="_blank">
+                    <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <a href="ai.jpg" target="_blank" rel="noopener noreferrer">
                             <div class="text-5xl mb-4 text-blue-400"><span class="inline-block" role="img" aria-label="ModernAI-emoji">🤖</span></div>
                             <h3 class="text-xl font-semibold mb-2 text-white">Modern AI by CISCO</h3>
                             <p class="text-gray-300 text-sm">Intro to ModernAI by CISCO NetAcad</p>
                         </a>
                     </div>
                     
-                    <div class="neon-box" data-tilt data-tilt-max="10" data-tilt-speed="400">
-                        <a href="iot.jpg" to="/nextpage" target="_blank">
+                    <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <a href="iot.jpg" target="_blank" rel="noopener noreferrer">
                             <div class="text-5xl mb-4 text-blue-400"><span class="inline-block" role="img" aria-label="IoT-emoji">📶</span></div>
                             <h3 class="text-xl font-semibold mb-2 text-white">IoT by CISCO</h3>
                             <p class="text-gray-300 text-sm">Intro to IoT devices by CISCO NetAcad</p>
@@ -289,7 +290,7 @@
                     <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
                         <!-- Added overflow wrapper for image zoom hover -->
                         <div class="overflow-hidden rounded-t-lg">
-                            <img class="w-full h-48 object-cover transform hover:scale-110 transition duration-500 ease-in-out" src="keylogger.png" alt="Keylogger-img">
+                            <img class="w-full h-48 object-cover transform hover:scale-110 transition duration-500 ease-in-out" src="keylogger.png" alt="Keylogger-img" loading="lazy">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-white mb-2">Windows Keylogger</h3>
@@ -298,14 +299,16 @@
                                 <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-2 py-1 rounded-full"> C </span>
                                 <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-2 py-1 rounded-full">Special Libs.</span>
                             </div>
-                            <a href="https://github.com/adarsh-bro/keylogger-windows" to="/nextpage" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">View Project</a>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://github.com/adarsh-bro/keylogger-windows" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">View Project</a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Original Project 2 -->
                     <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
                         <div class="overflow-hidden rounded-t-lg">
-                            <img class="w-full h-48 object-cover transform hover:scale-110 transition duration-500 ease-in-out" src="ids.png" alt="IDS-img">
+                            <img class="w-full h-48 object-cover transform hover:scale-110 transition duration-500 ease-in-out" src="ids.png" alt="IDS-img" loading="lazy">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-white mb-2">SENTINEL-X</h3>
@@ -314,14 +317,16 @@
                                 <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-2 py-1 rounded-full">Bash Scripting</span>
                                 <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-2 py-1 rounded-full">TG Bot</span>
                             </div>
-                            <a href="https://github.com/adarsh-bro/smart-bash-IDS" to="/nextpage" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">View Project</a>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://github.com/adarsh-bro/smart-bash-IDS" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">View Project</a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Original Project 3 -->
                     <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
                         <div class="overflow-hidden rounded-t-lg">
-                            <img class="w-full h-48 object-cover transform hover:scale-110 transition duration-500 ease-in-out" src="librarymgmt.png" alt="Librarymgmt-img">
+                            <img class="w-full h-48 object-cover transform hover:scale-110 transition duration-500 ease-in-out" src="librarymgmt.png" alt="Librarymgmt-img" loading="lazy">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-white mb-2">Lib-Dude</h3>
@@ -330,14 +335,16 @@
                                 <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-2 py-1 rounded-full">C++</span>
                                 <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-2 py-1 rounded-full">MySQL</span>
                             </div>
-                            <a href="https://github.com/adarsh-bro/Lib-Dude" to="/nextpage" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">View Project</a>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://github.com/adarsh-bro/Lib-Dude" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">View Project</a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- New: Interactive College Map Project -->
                     <div class="neon-box" data-tilt data-tilt-max="5" data-tilt-speed="400">
                         <div class="overflow-hidden rounded-t-lg">
-                            <img class="w-full h-48 object-cover transform hover:scale-110 transition duration-500 ease-in-out" src="college-map-img.png" alt="College Map System">
+                            <img class="w-full h-48 object-cover transform hover:scale-110 transition duration-500 ease-in-out" src="college-map-img.png" alt="College Map System" loading="lazy">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-white mb-2">KIT-Nav</h3>
@@ -347,7 +354,10 @@
                                 <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-2 py-1 rounded-full">Express</span>
                                 <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-2 py-1 rounded-full">SQLite</span>
                             </div>
-                            <a href="https://github.com/adarsh-bro/kit-nav" to="/nextpage" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">View Project</a>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://github.com/adarsh-bro/kit-nav" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">View Project</a>
+                                <a href="https://kit-nav.onrender.com/" target="_blank" rel="noopener noreferrer" class="inline-block bg-transparent border-2 border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white hover:border-gray-700 font-bold py-2 px-4 rounded-full transition-colors duration-300">Live Demo</a>
+                            </div>
                         </div>
                     </div>
 
@@ -381,12 +391,12 @@
                         <span id="copied-message" class="text-sm text-green-400">Copied!</span>
                     </div>
                     <div class="flex space-x-6 mt-4">
-                        <a href="https://linkedin.com/in/adarsh-saroj-589a4b35a" to="/nextpage" target="_blank" class="text-blue-400 hover:text-blue-500 transition-colors duration-300 text-2xl" aria-label="LinkedIn">
+                        <a href="https://linkedin.com/in/adarsh-saroj-589a4b35a" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-500 transition-colors duration-300 text-2xl" aria-label="LinkedIn">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.765s.784-1.765 1.75-1.765 1.75.79 1.75 1.765-.783 1.765-1.75 1.765zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
                             </svg>
                         </a>
-                        <a href="https://github.com/adarsh-bro" to="/nextpage" target="_blank" class="text-blue-400 hover:text-blue-500 transition-colors duration-300 text-2xl" aria-label="GitHub">
+                        <a href="https://github.com/adarsh-bro" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-500 transition-colors duration-300 text-2xl" aria-label="GitHub">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.802 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.809 1.309 3.494 1.001.107-.775.418-1.309.762-1.605-2.665-.299-5.464-1.332-5.464-5.93 0-1.312.465-2.385 1.236-3.221-.124-.301-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.004-.404 1.021.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.772.836 1.236 1.909 1.236 3.221 0 4.609-2.801 5.626-5.476 5.922.429.369.814 1.096.814 2.222v3.293c0 .319.192.694.801.576 4.765-1.585 8.199-6.084 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
                             </svg>
@@ -412,7 +422,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Typing Animation Initialization
             var typed = new Typed('#typed-element', {
-                strings: ['Tech Enthusiast.', 'Cyber Security Learner.', 'Kali Linux User.', 'Junior Web Developer.', 'Junior Network Engineer.'],
+                strings: ['Tech Enthusiast', 'Security Learner', 'Kali Linux User', 'Web Developer', 'Network Engineer'],
                 typeSpeed: 50,
                 backSpeed: 30,
                 loop: true,
@@ -495,4 +505,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     </script>
 </body>
-</html>
+                    </html>
