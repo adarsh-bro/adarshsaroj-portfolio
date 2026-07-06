@@ -113,6 +113,39 @@
             opacity: 1;
         }
 
+        #skills {
+            position: relative;
+        }
+
+        #skills::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.62);
+        }
+
+        #skills .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        #skills::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    #1a202c 0%,
+                    transparent 15%,
+                    transparent 85%,
+                    #1a202c 100%
+                );
+
+            pointer-events: none;
+        }
+
         /* ---- FIX: typewriter no longer shifts the page on mobile ----
            Previously #typed-element had white-space:nowrap with no
            reserved space, so every time the typed string changed length,
@@ -505,4 +538,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     </script>
 </body>
-                    </html>
+</html>
